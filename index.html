@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>GIFS</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+</head>
+
+<body>
+  <br><br><br><br>
+  <div class="container">
+    <h1>DO YOU EVEN GIF</h1>
+
+    <!-- buttons get dumped here -->
+    <div id="button-dump"></div>
+
+    <form id="gif-form">
+
+      <label for="gif-input">GIF ME BRUH</label>
+
+      <input type="text" onfocus="this.value=''" id="gif-input">
+
+      <br>
+
+      <!-- Button triggers new gif to be added -->
+      <input id="add-gif" type="submit" value="CLICK HERE">
+    </form>
+
+    <!-- gifs get put here -->
+    <div id="gif-container"></div>
+
+    <!-- jquery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="java.js"></script>
+  </div>
+</body>
+
+</html>
