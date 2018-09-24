@@ -28,7 +28,7 @@ $("#add-gif").on("click", function(event) {
           .attr("data-still", gifResponse[i].images.downsized_still.url)
           .attr("data-animate", gifResponse[i].images.downsized.url)
           .attr("class", "gif")
-          .attr("data-state", "still"),
+          .attr("data-state", "animate"),
         //give class equal to the rating
         gifRating = $("<div class='gifRating'>").text(
           "Rating: " + gifResponse[i].rating
@@ -72,10 +72,10 @@ $("#add-gif").on("click", function(event) {
 
 // THIS DOES NOT WORK AND IT SHOULD?! VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 
-$(".gif").on("click", function() {
-  console.log(this + "clicked");  // damn things wont even spit out a console log
-  var state = $(this).attr("data-state");
+$("div").delegate("img", "click", function() {
+  var state = $("img").attr("data-state");
   if (state === "still") {
+    console.log(this);
     $(this).attr("src", $(this).attr("data-animate"));
     $(this).attr("data-state", "animate");
   } else {
@@ -84,8 +84,8 @@ $(".gif").on("click", function() {
   }
 });
 
-$("#gif-name").on("click", function() {
-  console.log(this + "clicked!"); // damn things wont even spit out a console logs
+$("#button-dump").on("click", function() {
+  alert(this + "clicked!"); // damn things wont even spit out a console logs
 });
 
 // THIS DOES NOT WORK ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
