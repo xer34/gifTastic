@@ -1,5 +1,7 @@
 // array of gifs
 var gifArray = [];
+
+function gifphy()
 //on click event for text input submit button
 $("#add-gif").on("click", function(event) {
   // setting var gif to the trimmed input value of the text box
@@ -16,6 +18,7 @@ $("#add-gif").on("click", function(event) {
     url: queryURL,
     method: "GET"
   }).then(function(response) {
+    console.log(response)
     //setting the initial response as an array
     var gifResponse = response.data;
     //for loop to dynamically create a div for each word entered into the text box
@@ -25,7 +28,7 @@ $("#add-gif").on("click", function(event) {
         //create div for images, set attributes, url, etc
         gifImg = $("<img>")
           .attr("src", gifResponse[i].images.fixed_height.url)
-          .attr("data-still", gifResponse[i].images.downsized_still.url)
+          .attr("data-still", gifResponse[i].images.fixed_height_still.url)
           .attr("data-animate", gifResponse[i].images.downsized.url)
           .attr("class", "gif")
           .attr("data-state", "animate"),
@@ -70,12 +73,9 @@ $("#add-gif").on("click", function(event) {
   renderButtons();
 });
 
-// THIS DOES NOT WORK AND IT SHOULD?! VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
-
 $("div").delegate("img", "click", function() {
   var state = $("img").attr("data-state");
   if (state === "still") {
-    console.log(this);
     $(this).attr("src", $(this).attr("data-animate"));
     $(this).attr("data-state", "animate");
   } else {
@@ -84,8 +84,6 @@ $("div").delegate("img", "click", function() {
   }
 });
 
-$("#button-dump").on("click", function() {
-  alert(this + "clicked!"); // damn things wont even spit out a console logs
+  $("body").on("click", ".gif-name", function(){
+  alert(this + "clicked!");
 });
-
-// THIS DOES NOT WORK ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
